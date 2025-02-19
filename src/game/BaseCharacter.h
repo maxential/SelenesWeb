@@ -11,11 +11,12 @@
 class BaseCharacter {
 protected:
     int health;
-    int maxHealth;
+    int max_health;
 
-    int attackDamage;
+    int attack_damage;
 public:
     BaseCharacter();
+    BaseCharacter(int maxHealth, int attackDamage);
 
     int getHealth();
     bool isDead();

@@ -13,6 +13,10 @@ add_executable(SelenesWeb
         src/game/LocalPlayer.h
         src/game/BossCharacter.cpp
         src/game/BossCharacter.h
+        src/game/game.cpp
+        src/game/game.h
+        src/game/InputHandler.cpp
+        src/game/InputHandler.h
 )
 
 # Add the include directories for this target

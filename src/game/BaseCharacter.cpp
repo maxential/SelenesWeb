@@ -8,8 +8,14 @@
 
 BaseCharacter::BaseCharacter() {
     health = 100;
-    maxHealth = 100;
-    attackDamage = 10;
+    max_health = 100;
+    attack_damage = 10;
+}
+
+BaseCharacter::BaseCharacter(int maxHealth, int attackDamage) {
+    health = maxHealth;
+    max_health = maxHealth;;
+    attack_damage = attackDamage;
 }
 
 int BaseCharacter::getHealth() {
@@ -32,6 +38,6 @@ bool BaseCharacter::Attack(BaseCharacter* target) {
     if (target->isDead()) {
         return false;
     }
-    target->takeDamage(attackDamage);
+    target->takeDamage(attack_damage);
     return true;
 }

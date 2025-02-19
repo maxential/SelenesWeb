@@ -9,6 +9,8 @@
 
 class LocalPlayer : public BaseCharacter{
     protected:
+    int healAmount;
+    int doAction();
     public:
     LocalPlayer();
 };

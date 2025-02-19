@@ -6,6 +6,6 @@
 
 LocalPlayer::LocalPlayer() {
     health = 100;
-    maxHealth = 100;
-    attackDamage = 10;
+    max_health = 100;
+    attack_damage = 10;
 }

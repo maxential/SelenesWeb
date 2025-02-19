@@ -2,11 +2,15 @@
 #include "game/BaseCharacter.h"
 #include "game/LocalPlayer.h"
 #include "game/BossCharacter.h"
+#include "game/Game.h"
 
 int main() {
     printf("Hello World\n");
-    LocalPlayer* localPlayer = new LocalPlayer();
-    BossCharacter* selene = new BossCharacter();
-    localPlayer->Attack(selene);
-    selene->getHealth();
+    // BossCharacter* selene = new BossCharacter();
+    //
+    // selene->getHealth();
+
+    Game* game = new Game();
+    game->initGameLoop();
+
 }

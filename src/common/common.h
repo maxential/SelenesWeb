@@ -5,4 +5,7 @@
 #ifndef COMMON_H
 #define COMMON_H
 
+#include <memory>
+#include <vector>
+
 #endif //COMMON_H
