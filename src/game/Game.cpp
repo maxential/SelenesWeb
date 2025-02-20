@@ -17,6 +17,10 @@ int Game::initGameLoop() {
     printf("starting da game\n");
     while (true) {
         // game shit here lol
+        if (!canGameContinue()) {
+            printf("game over\n");
+            return 0;
+        }
         current_room++;
         startRoomEncounter();
         printf("room completed\n");
@@ -33,7 +37,7 @@ bool Game::canGameContinue() {
 }
 
 int Game::doCombatChoice(BaseCharacter* target) {
-    int choice = 0;
+    int choice{0};
     while (choice < CombatChoice::CC_HIT || choice > CombatChoice::CC_END) {
         printf("Choose your choice:\n");
         printf("1: HIT\n");
