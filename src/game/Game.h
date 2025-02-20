@@ -5,7 +5,6 @@
 #ifndef GAME_H
 #define GAME_H
 #include "common/common.h"
-#include "InputHandler.h"
 
 #include "BossCharacter.h"
 #include "LocalPlayer.h"
@@ -21,7 +20,7 @@ private:
         BC_END
     };
     enum CombatChoice {
-        CC_NONE = 0,
+        CC_NONEE = 0,
         CC_HIT,
         CC_SLAP,
         CC_KICK,

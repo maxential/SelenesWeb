@@ -8,4 +8,6 @@
 #include <memory>
 #include <vector>
 
+#include "ConsoleManager.h"
+
 #endif //COMMON_H

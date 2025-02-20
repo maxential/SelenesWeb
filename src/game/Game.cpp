@@ -38,7 +38,7 @@ bool Game::canGameContinue() {
 
 int Game::doCombatChoice(BaseCharacter* target) {
     int choice{0};
-    while (choice < CombatChoice::CC_HIT || choice > CombatChoice::CC_END) {
+    while (choice > CombatChoice::CC_NONEE || choice < CombatChoice::CC_END) {
         printf("Choose your choice:\n");
         printf("1: HIT\n");
         printf("2: SLAP\n");
@@ -65,7 +65,6 @@ int Game::doCombatChoice(BaseCharacter* target) {
             break;
         }
     }
-    printf("returning true");
     return true;
 }
 
