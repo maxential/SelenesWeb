@@ -33,7 +33,7 @@ bool Game::canGameContinue() {
 }
 
 int Game::doCombatChoice(BaseCharacter* target) {
-    int choice;
+    int choice = 0;
     while (choice < CombatChoice::CC_HIT || choice > CombatChoice::CC_END) {
         printf("Choose your choice:\n");
         printf("1: HIT\n");
@@ -61,10 +61,9 @@ int Game::doCombatChoice(BaseCharacter* target) {
             break;
         }
     }
-
+    printf("returning true");
     return true;
 }
-
 
 // make enemies in here and start turn based fight
 int Game::startRoomEncounter() {
@@ -91,7 +90,6 @@ int Game::startRoomEncounter() {
 
     return true;
 }
-
 
 int Game::endRoomEncounter() {
     printf("yo u didn't die :D\n");
