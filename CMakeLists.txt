@@ -59,7 +59,7 @@ get_target_property(INCLUDE_DIRS SelenesWeb INCLUDE_DIRECTORIES)
 message(STATUS "Include directories for SelenesWeb: ${INCLUDE_DIRS}")
 
 find_package(glm CONFIG REQUIRED)
-target_link_libraries(SelenesWeb PRIVATE glm::glm)
+target_include_directories(SelenesWeb PRIVATE ${glm_INCLUDE_DIRS})
 
 if(CMAKE_BUILD_TYPE STREQUAL "Debug")
     message(STATUS "Configuring for Debug mode")
