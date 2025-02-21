@@ -12,6 +12,7 @@ int main() {
         return -1;
     }
     SDL_Log("initialized successfully");
+    printf("hi teams\n");
     SDL_Delay(1500);
     Game* game = new Game();
     game->initGameLoop();

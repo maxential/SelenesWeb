@@ -1,15 +1,15 @@
 cmake_minimum_required(VERSION 3.30)
-project(SelenesWeb)
+
+set(VCPKG_TARGET_TRIPLET "x64-mingw-static" CACHE STRING "Target triplet for vcpkg")
+set(CMAKE_PREFIX_PATH "C:/vcpkg/installed/x64-mingw-static" CACHE STRING "vcpkg prefix path")
+set(CMAKE_TOOLCHAIN_FILE "C:/vcpkg/scripts/buildsystems/vcpkg.cmake" CACHE STRING "" FORCE)
 
 set(CMAKE_CXX_STANDARD 23)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 set(CMAKE_VERBOSE_MAKEFILE ON)
 set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/build)
 
-set(VCPKG_TARGET_TRIPLET "x64-mingw-static" CACHE STRING "Target triplet for vcpkg")
-# Set CMAKE_PREFIX_PATH for mingw (if needed)
-set(CMAKE_PREFIX_PATH "C:/vcpkg/installed/x64-mingw-static" CACHE STRING "vcpkg prefix path")
-set(CMAKE_TOOLCHAIN_FILE "C:/vcpkg/scripts/buildsystems/vcpkg.cmake" CACHE STRING "" FORCE)
+project(SelenesWeb)
 
 if(WIN32)
     message(STATUS "Running on Windows")
@@ -55,26 +55,24 @@ add_executable(SelenesWeb
         src/Engine/Window.h
 )
 
-# Add the include directories for this target
+# Add the include directories
 target_include_directories(SelenesWeb PRIVATE ${PROJECT_SOURCE_DIR}/src)
 target_include_directories(SelenesWeb PRIVATE ${PROJECT_SOURCE_DIR}/dependencies/include)
 
 find_package(glm CONFIG REQUIRED)
-target_include_directories(SelenesWeb PRIVATE "${VCPKG_INSTALLED_DIR}/x64-mingw-static/include")
-# Print the include directories for SelenesWeb
+target_link_libraries(SelenesWeb PRIVATE glm::glm)
+# Print the include directories
 get_target_property(INCLUDE_DIRS SelenesWeb INCLUDE_DIRECTORIES)
 message(STATUS "Include directories for SelenesWeb: ${INCLUDE_DIRS}")
 message(STATUS "CMAKE_PREFIX_PATH: ${CMAKE_PREFIX_PATH}")
 message(STATUS "VCPKG_INCLUDE_DIRS: ${VCPKG_INCLUDE_DIRS}")
-message(STATUS "GLM found at: ${GLM_INCLUDE_DIRS}")
 
 if(CMAKE_BUILD_TYPE STREQUAL "Debug")
     message(STATUS "Configuring for Debug mode")
     # Link the Debug version of SDL libraries
     target_link_libraries(SelenesWeb PRIVATE ${PROJECT_SOURCE_DIR}/dependencies/lib/Debug/SDL/libSDL3.dll.a)
     target_link_libraries(SelenesWeb PRIVATE ${PROJECT_SOURCE_DIR}/dependencies/lib/Debug/SDL/libSDL3_image.dll.a)
-
-
+    
     # Copy the Debug version of SDL3.dll and SDL3_image.dll
     set(SDL3_DLL "${PROJECT_SOURCE_DIR}/dependencies/lib/Debug/SDL/SDL3.dll")
     set(SDL3_IMAGE_DLL "${PROJECT_SOURCE_DIR}/dependencies/lib/Debug/SDL/SDL3_image.dll")
