@@ -53,6 +53,12 @@ add_executable(SelenesWeb
         src/common/math.h
         src/Engine/Window.cpp
         src/Engine/Window.h
+        src/Engine/TextureManager.cpp
+        src/Engine/TextureManager.h
+        src/Engine/Renderer.cpp
+        src/Engine/Renderer.h
+        src/Engine/InputHandler.cpp
+        src/Engine/InputHandler.h
 )
 
 # Add the include directories
@@ -72,7 +78,7 @@ if(CMAKE_BUILD_TYPE STREQUAL "Debug")
     # Link the Debug version of SDL libraries
     target_link_libraries(SelenesWeb PRIVATE ${PROJECT_SOURCE_DIR}/dependencies/lib/Debug/SDL/libSDL3.dll.a)
     target_link_libraries(SelenesWeb PRIVATE ${PROJECT_SOURCE_DIR}/dependencies/lib/Debug/SDL/libSDL3_image.dll.a)
-    
+
     # Copy the Debug version of SDL3.dll and SDL3_image.dll
     set(SDL3_DLL "${PROJECT_SOURCE_DIR}/dependencies/lib/Debug/SDL/SDL3.dll")
     set(SDL3_IMAGE_DLL "${PROJECT_SOURCE_DIR}/dependencies/lib/Debug/SDL/SDL3_image.dll")
