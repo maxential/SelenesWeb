@@ -5,11 +5,17 @@
 #ifndef ENGINE_H
 #define ENGINE_H
 
-
+#include "Engine/Renderer.h"
 
 class Engine {
+public:
+    Engine();
+    ~Engine();
 
-};
+    private:
+        std::shared_ptr<Renderer> renderer;
+        std::shared_ptr<Window> window;
+    };
 
 
 

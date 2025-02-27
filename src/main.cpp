@@ -5,6 +5,7 @@
 #include "game/Game.h"
 #include "SDL3/SDL.h"
 #include <thread>
+
 int main() {
     if (!SDL_Init(SDL_INIT_VIDEO | SDL_INIT_EVENTS))
     {

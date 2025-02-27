@@ -16,15 +16,16 @@
 class Renderer
 {
 public:
-    Renderer(Window& _window);
+    Renderer(std::shared_ptr<Window> _window);
     ~Renderer();
 
     SDL_Renderer* getSDLRenderer() const { return renderer; }
     glm::i32vec2 getWindowSize();
     void render(const std::function<void()>& callback);
-
+    bool quit();
 private:
-    std::unique_ptr<Window> window;
+    bool quit_flag;
+    std::shared_ptr<Window> window;
     SDL_Renderer* renderer;
     glm::i32vec2 windowSize;
 };

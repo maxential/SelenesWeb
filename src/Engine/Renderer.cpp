@@ -8,8 +8,8 @@
 
 #include "InputHandler.h"
 
-Renderer::Renderer(Window& _window)
-    : window(&_window)
+Renderer::Renderer(std::shared_ptr<Window> _window)
+    : window(_window)
 {
 
     renderer = SDL_CreateRenderer(window->getSDLWindow(), NULL);
@@ -21,8 +21,16 @@ Renderer::Renderer(Window& _window)
 Renderer::~Renderer()
 {
     if (renderer) {
+        SDL_Log("shutdown");
+        ImGui_ImplSDLRenderer3_Shutdown();
+        ImGui_ImplSDL3_Shutdown();
+        ImGui::DestroyContext();
         SDL_DestroyRenderer(renderer);
     }
+}
+
+bool Renderer::quit() {
+    quit_flag = true;
 }
 
 void Renderer::render(const std::function<void()>& callback)
@@ -38,8 +46,7 @@ void Renderer::render(const std::function<void()>& callback)
     ImGui::GetIO().IniFilename = nullptr;
 
     SDL_Event event;
-    int quit = 0;
-    while (!quit)
+    while (!quit_flag)
     {
         while (SDL_PollEvent(&event)) {
             InputHandler::getInstance()->UpdateFromEvent(&event);
@@ -62,13 +69,6 @@ void Renderer::render(const std::function<void()>& callback)
         SDL_Delay(1);
     }
 
-
-    SDL_Log("shutdown");
-    ImGui_ImplSDLRenderer3_Shutdown();
-    ImGui_ImplSDL3_Shutdown();
-    ImGui::DestroyContext();
-    SDL_DestroyRenderer(renderer);
-    SDL_Quit();
 }
 
 glm::i32vec2 Renderer::getWindowSize() {
