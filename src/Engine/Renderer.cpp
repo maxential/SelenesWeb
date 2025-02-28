@@ -8,8 +8,8 @@
 
 #include "InputHandler.h"
 
-Renderer::Renderer(std::shared_ptr<Window> _window)
-    : window(_window)
+Renderer::Renderer(std::unique_ptr<Window> _window)
+    : window(std::move(_window))
 {
 
     renderer = SDL_CreateRenderer(window->getSDLWindow(), NULL);

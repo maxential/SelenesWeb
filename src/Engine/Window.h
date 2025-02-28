@@ -16,7 +16,7 @@ public:
 
     SDL_Window* getSDLWindow() const { return window; }
     glm::ivec2 getWindowSize();
-    SDL_Window* CreateWindow(const char* title, int width, int height);
+    SDL_Window* CreateSDLWindow(const char* title, int width, int height);
 private:
     SDL_Window* window;
     glm::ivec2 window_size;
