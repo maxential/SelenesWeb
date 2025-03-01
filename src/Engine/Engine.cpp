@@ -18,9 +18,20 @@ int Engine::CreateGameWindow(char *window_name, glm::ivec2 size) {
     window->CreateSDLWindow(window_name, size.x, size.y);
     return true;
 }
+// pass window as arg maybe idfk what iam doing
+int Engine::CreateRenderer() {
+    if (window->getSDLWindow() == nullptr) {
+        SDL_Log("Failed to create renderer: Window is not initialized.");
+        return false;
+    }
+    renderer = std::make_unique<Renderer>(std::move(window));
+    return true;
+}
 
 int Engine::RenderGameWindow() {
-    renderer = std::make_unique<Renderer>(std::move(window));
+    if (!renderer) {
+        return false;
+    }
     renderer->render([&]() {
         ImGui::Begin("Game Window");
         {

@@ -17,13 +17,10 @@ int main() {
     SDL_Log("initialized successfully");
     printf("hi teams\n");
     SDL_Delay(1500);
-    std::shared_ptr<Window> windowz  = std::make_shared<Window>();
-    windowz->CreateSDLWindow("vagina", 640,480 );
-    glm::ivec2 window_size = { 640,480 };
     Engine* engine = new Engine();
-    engine->CreateGameWindow("vagina", window_size);
-
-     engine->RenderGameWindow();
+    engine->CreateGameWindow("vagina", { 640,480 });
+    engine->CreateRenderer();
+    engine->RenderGameWindow();
     // Game* game = new Game();
     // game->initGameLoop();
 }

@@ -15,6 +15,7 @@ public:
 
     int CreateGameWindow(char* window_name, glm::ivec2 size);
     int RenderGameWindow();
+    int CreateRenderer();
 
     private:
         std::unique_ptr<Renderer> renderer;

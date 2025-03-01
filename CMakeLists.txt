@@ -67,6 +67,7 @@ target_include_directories(SelenesWeb PRIVATE ${PROJECT_SOURCE_DIR}/dependencies
 
 find_package(glm CONFIG REQUIRED)
 target_link_libraries(SelenesWeb PRIVATE glm::glm)
+
 # Print the include directories
 get_target_property(INCLUDE_DIRS SelenesWeb INCLUDE_DIRECTORIES)
 message(STATUS "Include directories for SelenesWeb: ${INCLUDE_DIRS}")
